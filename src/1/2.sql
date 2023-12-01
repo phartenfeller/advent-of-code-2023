@@ -1,3 +1,5 @@
+-- problem "eightwo" should be "82" so we can't just replace all digits
+-- solution helper function that checks for digits for each character and adds them to the result string
 CREATE OR REPLACE FUNCTION day1_replace_digits(pi_str VARCHAR2) RETURN VARCHAR2 IS
     l_temp_str   VARCHAR2(4000);
     l_replaced_str VARCHAR2(4000) := '';
@@ -46,16 +48,26 @@ END day1_replace_digits;
 
 
 with digit_str as (
-  select line_no, day1_replace_digits(line_str) as line_str, line_str as orig
+  select line_no
+       , day1_replace_digits(line_str) as line_str
+       , line_str as orig
     from aoc_input
-where day = 1 and key = '1'
-) , only_nums as (
-select line_no, regexp_replace(line_str, '[^0-9]', '') as line, line_str, orig
-from digit_str
-order by line_no
+   where day = 1 
+     and key = '1'
+), only_nums as (
+  select line_no
+         --remove all non-digits
+       , regexp_replace(line_str, '[^0-9]', '') as line
+       , line_str
+       , orig
+    from digit_str
+   order by line_no
 ), row_res as (
-select line_no, to_number(substr(line, 1, 1) || substr(line, -1, 1)) as row_res , line_str, orig
-from only_nums
+  select line_no
+       , to_number(substr(line, 1, 1) || substr(line, -1, 1)) as row_res
+       , line_str
+       , orig
+    from only_nums
 )
-select  sum(row_res) from row_res
+select sum(row_res) from row_res
 ;
