@@ -3,13 +3,6 @@
 CREATE OR REPLACE FUNCTION day1_replace_digits(pi_str VARCHAR2) RETURN VARCHAR2 IS
     l_temp_str   VARCHAR2(4000);
     l_replaced_str VARCHAR2(4000) := '';
-    
-    function replace_single(pi_vc varchar2, pi_char_pos in number, pi_replace in varchar2, pi_with in varchar2) return varchar2 is
-    begin
-      return SUBSTR(pi_vc, 1, pi_char_pos - 1) ||
-            pi_with ||
-            SUBSTR(pi_vc, pi_char_pos + LENGTH(pi_replace));
-    end replace_single;
 BEGIN
     dbms_output.put_line(pi_str);
     for i in 1 .. length(pi_str)
