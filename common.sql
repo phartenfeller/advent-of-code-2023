@@ -18,7 +18,8 @@ begin
        , rownum
        , column_value
     from x
-       , apex_string.split(x.data, chr(10));
+       , apex_string.split(x.data, chr(10))
+   where column_value is not null;
 
   commit;
 end;
