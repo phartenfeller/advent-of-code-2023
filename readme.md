@@ -6,7 +6,7 @@
 - [Day 4: Scratchcards](https://github.com/phartenfeller/advent-of-code-2023/tree/main/src/4)
 - [Day 5: If You Give A Seed A Fertilizer](https://github.com/phartenfeller/advent-of-code-2023/tree/main/src/5)
 - [Day 6: Wait For It](https://github.com/phartenfeller/advent-of-code-2023/tree/main/src/6)
-
+- [Day 7: Camel Cards](https://github.com/phartenfeller/advent-of-code-2023/tree/main/src/7)
 
 ## Set up table and data
 
